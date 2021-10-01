@@ -36,6 +36,13 @@ h1{
     padding: 1em;
 }
 
+#ship-list{
+    font-size: 1em;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0.5em;
+}
+
 .panel{
     display: flex;
     align-items: center;

@@ -64,6 +64,13 @@ function selectShipData(id) {
             shipCapability.textContent = `Capability: ${data.capability}`;
             shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
             shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
-            shipWiki.textContent = `Wiki: ${data.wiki_link}`;
+            shipWiki.innerHTML = `<href="${data.wiki_link}">Get more info`;
 		});
 }
+
+// When the Wiki button is clicked
+shipWiki.addEventListener("click", function(){
+    console.log("Button clicked");
+    console.log(shipWiki.textContent);
+    window.location = shipWiki.innerHTML;
+});

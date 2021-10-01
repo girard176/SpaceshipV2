@@ -7,15 +7,23 @@
 // Variables
 const shipDataUrl = "https://lldev.thespacedevs.com/2.2.0/config/spacecraft/?in_use=true&human_rated=true&order=name";
 const shipList = document.getElementById("ship-list");
-const shipImage = document.getElementById("ship-image");
-const shipInfo = document.getElementById("ship-info");
+
+const shipImage = document.getElementById("ship-image")
+
+const shipAgency = document.getElementById("ship-agency")
+const shipName = document.getElementById("ship-name")
+const shipCapability = document.getElementById("ship-capability")
+const shipMaidenFlight = document.getElementById("ship-maidenflight")
+const shipCrewCapacity = document.getElementById("ship-crewcapacity")
+const shipWiki = document.getElementById("ship-wiki")
 
 // When the page load
 window.addEventListener("load", updateShipList);
 
 // Retreive the spaceships data
 async function getShipData(){
-    return fetch(shipDataUrl).then(response => response.json());
+    return fetch(shipDataUrl).
+        then(response => response.json());
 }
 
 // Add spaceships to drop down list
@@ -45,11 +53,17 @@ shipList.addEventListener("change", function(){
     selectShipData(id);
 });
 
-// Retrieve ship data
+// Retrieve spaceship data
 function selectShipData(id) {
 	fetch(`https://lldev.thespacedevs.com/2.2.0/config/spacecraft/${id}`)
-		.then(res => res.json())
+		.then(response => response.json())
 		.then(data => {
-			shipImage.innerHTML = `<img src=${data.image_url} alt="Ship" />`
+			shipImage.innerHTML = `<img src=${data.image_url} alt="Ship" />`;
+            shipAgency.textContent = `Agency: ${data.agency.name}`;
+            shipName.textContent = `Name: ${data.name}`;
+            shipCapability.textContent = `Capability: ${data.capability}`;
+            shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
+            shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
+            shipWiki.textContent = `Wiki: ${data.wiki_link}`;
 		});
 }

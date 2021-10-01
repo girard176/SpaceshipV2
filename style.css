@@ -3,19 +3,19 @@
     Styling for the spaceship website
 */
 
-html, body{
+html, body, .bg{
     margin: 0;
     font-family: Arial;
     text-align: center;
     color: gray;
-}
-
-.bg{
+    background-color: black;
     height: 100%;
+    width: 100%;
     background-image: url(orbit.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 
 h1{
@@ -26,7 +26,7 @@ h1{
 }
 
 .header{
-    width: 80%;
+    width: 960px;
     height: auto;
     margin: auto;
     font-size: 1.25em;
@@ -41,7 +41,7 @@ h1{
     align-items: center;
     justify-content: center;
     margin: auto;
-    width: 90%;
+    width: 960px;
     height: 600px;
     /*background-color: blue;*/
 }
@@ -58,12 +58,8 @@ h1{
     background-color: whitesmoke;
 }
 
-#ship-image{
-    /*object-fit: cover;
+.data img{
+    object-fit: cover;
     height: 100%;
-    width: 100%;*/
-}
-
-#ship-data{
-    /*TBD*/
+    width: 100%;
 }

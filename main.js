@@ -21,7 +21,7 @@ async function getShipData(){
 // Add spaceships to drop down list
 function updateShipList(){
     getShipData().then(function(data){
-            console.log("Updating ship list: ")
+            console.log("Updated ship list: ")
             for(element in data.results){
                 let option = createOption(data.results[element].id, data.results[element].name);
                 shipList.appendChild(option);
@@ -35,16 +35,13 @@ function createOption(id, text){
     option.id = id;
     option.textContent = text;
     console.log(option.text);
-    console.log(option.id);
     return option;
 }
 
 // When a spaceship is selected from the list
 shipList.addEventListener("change", function(){
-    console.log("Selection made")
     let id = this.options[this.selectedIndex].id;
-    console.log(this.value);
-    console.log(id);
+    console.log("Selection made: " + this.value + " id: " + id)
     selectShipData(id);
 });
 

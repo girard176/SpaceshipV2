@@ -58,19 +58,22 @@ function selectShipData(id) {
 	fetch(`https://lldev.thespacedevs.com/2.2.0/config/spacecraft/${id}`)
 		.then(response => response.json())
 		.then(data => {
-			shipImage.innerHTML = `<img src=${data.image_url} alt="Ship" />`;
+			shipImage.innerHTML = `<img src=${data.image_url} alt="Ship"/>`;
             shipAgency.textContent = `Agency: ${data.agency.name}`;
             shipName.textContent = `Name: ${data.name}`;
             shipCapability.textContent = `Capability: ${data.capability}`;
             shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
             shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
-            shipWiki.innerHTML = `<href="${data.wiki_link}">Get more info`;
+            /*shipWiki.innerHTML = `<href="${data.wiki_link}"  value="Get more info"/>`;
+            shipWiki.innerHTML = `<href="${data.wiki_link}"/>`;*/
+            console.log(data.wiki_link)
+            shipWiki.innerHTML = data.wiki_link;
 		});
 }
 
 // When the Wiki button is clicked
 shipWiki.addEventListener("click", function(){
     console.log("Button clicked");
-    console.log(shipWiki.textContent);
-    window.location = shipWiki.innerHTML;
+    console.log(shipWiki);
+    window.location = shipWiki;
 });

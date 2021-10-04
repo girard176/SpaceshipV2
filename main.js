@@ -66,7 +66,6 @@ function selectShipData(id) {
             shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
             /*shipWiki.innerHTML = `<href="${data.wiki_link}"  value="Get more info"/>`;
             shipWiki.innerHTML = `<href="${data.wiki_link}"/>`;*/
-            console.log(data.wiki_link)
             shipWiki.innerHTML = data.wiki_link;
 		});
 }
@@ -74,6 +73,6 @@ function selectShipData(id) {
 // When the Wiki button is clicked
 shipWiki.addEventListener("click", function(){
     console.log("Button clicked");
-    console.log(shipWiki);
-    window.location = shipWiki;
+    console.log(shipWiki.innerHTML);
+    window.location = shipWiki.innerHTML;
 });

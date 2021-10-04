@@ -50,13 +50,9 @@ h1{
     margin: auto;
     width: 960px;
     height: 600px;
-    /*background-color: blue;*/
 }
 
 .data{
-    /*display: flex;
-    align-items: center;
-    justify-content: center;*/
     width: 50%;
     height: 100%;
     margin: 1%;
@@ -66,11 +62,8 @@ h1{
 }
 
 .data img{
-    /*align-items: center;
-    justify-content: center;*/
     margin: 0.5em;
-    object-fit: cover;
+    object-fit: contain;
     height: 95%;
     width: 95%;
-    border-radius: 10px;
 }

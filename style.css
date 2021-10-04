@@ -46,12 +46,7 @@ h1{
     
 }
 
-#ship-wiki:active{
-    transform: scale(0.95);
-}
-
 .panel{
-    /*display: flex;*/
     display: none;
     align-items: center;
     justify-content: center;
@@ -74,4 +69,8 @@ h1{
     object-fit: contain;
     height: 95%;
     width: 95%;
+}
+
+#ship-wiki:active{
+    transform: scale(0.95);
 }

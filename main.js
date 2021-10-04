@@ -24,8 +24,12 @@ window.addEventListener("load", updateShipList);
 
 // Retreive the spaceships data
 async function getShipData(){
-    return fetch(shipDataUrl).
-        then(response => response.json());
+    try{
+        return fetch(shipDataUrl).
+            then(response => response.json());
+    } catch {
+        fetchError(arguments.callee.name);
+    }
 }
 
 // Add spaceships to drop down list
@@ -52,23 +56,32 @@ function createOption(id, text){
 shipList.addEventListener("change", function(){
     let id = this.options[this.selectedIndex].id;
     console.log("Selection made: " + this.value + " id: " + id)
-    selectShipData(id);
+    updateShipData(id);
     displayResult();
 });
 
 // Retrieve spaceship data
-function selectShipData(id) {
-	fetch(`https://lldev.thespacedevs.com/2.2.0/config/spacecraft/${id}`)
-		.then(response => response.json())
-		.then(data => {
-			shipImage.innerHTML = `<img src=${data.image_url} alt="Ship"/>`;
-            shipAgency.textContent = `Agency: ${data.agency.name}`;
-            shipName.textContent = `Name: ${data.name}`;
-            shipCapability.textContent = `Capability: ${data.capability}`;
-            shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
-            shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
-            shipWikiUrl = data.wiki_link;
-		});
+async function selectShipData(id) {
+    try{    
+        return fetch(`https://lldev.thespacedevs.com/2.2.0/config/spacecraft/${id}`)
+            .then(response => response.json());
+    } catch {
+        fetchError(arguments.callee.name);
+    }
+}
+
+// Update the spaceship data variables
+function updateShipData(id){
+    selectShipData(id).then(function(data) {
+        shipImage.innerHTML = `<img src=${data.image_url} alt="Ship"/>`;
+        shipAgency.textContent = `Agency: ${data.agency.name}`;
+        shipName.textContent = `Name: ${data.name}`;
+        shipCapability.textContent = `Capability: ${data.capability}`;
+        shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
+        shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
+        shipWikiUrl = data.wiki_link;
+        }
+    );
 }
 
 // Show the ship-result panel
@@ -81,3 +94,8 @@ shipWiki.addEventListener("click", function(){
     console.log("Button clicked, ship URL: " + shipWikiUrl);
     window.open(shipWikiUrl, '_blank').focus();
 });
+
+function fetchError(functionName){
+    console.log(functionName + " error")
+    alert("There was an error while retreiving the spaceship data");
+}

@@ -17,6 +17,8 @@ const shipMaidenFlight = document.getElementById("ship-maidenflight")
 const shipCrewCapacity = document.getElementById("ship-crewcapacity")
 const shipWiki = document.getElementById("ship-wiki")
 
+var shipWikiUrl
+
 // When the page load
 window.addEventListener("load", updateShipList);
 
@@ -64,15 +66,12 @@ function selectShipData(id) {
             shipCapability.textContent = `Capability: ${data.capability}`;
             shipMaidenFlight.textContent = `Maiden flight: ${data.maiden_flight}`;
             shipCrewCapacity.textContent = `Crew capacity: ${data.crew_capacity}`;
-            /*shipWiki.innerHTML = `<href="${data.wiki_link}"  value="Get more info"/>`;
-            shipWiki.innerHTML = `<href="${data.wiki_link}"/>`;*/
-            shipWiki.innerHTML = data.wiki_link;
+            shipWikiUrl = data.wiki_link;
 		});
 }
 
 // When the Wiki button is clicked
 shipWiki.addEventListener("click", function(){
-    console.log("Button clicked");
-    console.log(shipWiki.innerHTML);
-    window.location = shipWiki.innerHTML;
+    console.log("Button clicked, ship URL: " + shipWikiUrl);
+    window.open(shipWikiUrl, '_blank').focus();
 });

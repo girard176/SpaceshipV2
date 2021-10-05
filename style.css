@@ -26,7 +26,7 @@ h1{
 }
 
 .header{
-    width: 960px;
+    width: 80%;
     height: auto;
     margin: auto;
     font-size: 1.25em;
@@ -48,11 +48,12 @@ h1{
 
 .panel{
     display: none;
-    align-items: center;
+    align-items: top;
     justify-content: center;
     margin: auto;
-    width: 960px;
-    height: 600px;
+    width: 95%;
+    min-width: 720px;
+    height: auto;
 }
 
 .data{
@@ -62,13 +63,14 @@ h1{
     font-size: 1.25em;
     border-radius: 10px;
     background-color: whitesmoke;
+    padding: 1em;
 }
 
 .data img{
-    margin: 0.5em;
     object-fit: contain;
     height: 95%;
     width: 95%;
+    max-height: 500px;
 }
 
 #ship-wiki:active{
